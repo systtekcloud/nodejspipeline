@@ -6,9 +6,11 @@ node {
         gitcommit = readFile('.git/commit-id').trim()
       }
     stage('test') {
-        nodejs(nodeJSInstallationName: 'NodeJS') {
-          sh 'npm install --only=dev'
-          sh 'npm test'
+        def containertest = docker.image('node:lts-hydrogen')
+        containertest.pull()
+        containertest.inside {
+            sh 'npm install --only=dev'
+            sh 'npm test'
         }
     }
     stage('Docker Build & Push') {
