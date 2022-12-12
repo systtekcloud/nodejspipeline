@@ -18,5 +18,13 @@ node {
         def nodejsapp = docker.build("systtekcloud/nodejsapp:${gitcommit}", ".")
         nodejsapp.push()
       }
+      post {
+          success {
+            echo 'Exit' 
+          }
+          failure {
+            echo 'Fail'
+          }
+      }
     }
 }
