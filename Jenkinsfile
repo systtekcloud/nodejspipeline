@@ -1,4 +1,4 @@
-// Pipilene Node
+// Pipeline Node
 node {
     def gitcommit
     stage('Verificación SCM') {
