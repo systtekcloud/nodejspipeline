@@ -1,3 +1,4 @@
+// Pipilene Node
 node {
     def gitcommit
     stage('Verificación SCM') {
